@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>创飞科技 · 2026 招新海报方案</title>
+<meta name="description" content="山东理工大学创飞科技无人机社团 2026 招新海报设计稿展示。" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --neon: #39ff14;
+    --orange: #ff6b00;
+    --cyan: #00e5ff;
+    --bg: #080a10;
+    --panel: #11141d;
+  }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: #eaf0ff;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  /* 背景氛围 */
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(57,255,20,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(57,255,20,0.045) 1px, transparent 1px);
+    background-size: 54px 54px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bg-glow {
+    position: fixed;
+    width: 620px; height: 620px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.22;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bg-glow.a { background: var(--neon); top: -260px; left: -180px; }
+  .bg-glow.b { background: var(--orange); bottom: -300px; right: -200px; }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 22px 70px;
+  }
+
+  /* 顶部 */
+  header {
+    padding: 56px 0 44px;
+    text-align: center;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 30px;
+    padding: 12px 24px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(57,255,20,0.28);
+    border-radius: 60px;
+    backdrop-filter: blur(10px);
+  }
+  .brand img.logo { width: 108px; display: block; }
+  .brand .divider {
+    width: 1px; height: 30px;
+    background: rgba(255,255,255,0.16);
+  }
+  .brand img.school {
+    width: 38px; height: 38px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 50%;
+    padding: 3px;
+  }
+
+  h1 {
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 900;
+    letter-spacing: 3px;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  h1 .hl {
+    color: var(--neon);
+    text-shadow: 0 0 26px rgba(57,255,20,0.55);
+  }
+  .slogan {
+    display: inline-block;
+    font-size: clamp(14px, 2.4vw, 18px);
+    letter-spacing: 3px;
+    color: #b9c6dd;
+    padding: 9px 26px;
+    border: 1px solid rgba(255,107,0,0.42);
+    border-radius: 40px;
+    background: rgba(255,107,0,0.07);
+  }
+  .meta {
+    margin-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .chip {
+    font-size: 13px;
+    padding: 6px 15px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #a9b6cc;
+    letter-spacing: 1px;
+  }
+  .chip.hot {
+    color: var(--neon);
+    border-color: rgba(57,255,20,0.4);
+    background: rgba(57,255,20,0.08);
+  }
+
+  /* 方案卡片 */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 10px;
+  }
+
+  .card {
+    background: linear-gradient(180deg, var(--panel), #0c0f16);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(.2,.8,.2,1), border-color 0.35s, box-shadow 0.35s;
+  }
+  .card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(57,255,20,0.45);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(57,255,20,0.12);
+  }
+
+  .card-head {
+    padding: 22px 22px 16px;
+  }
+  .tagline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 5px 13px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+  }
+  .card:nth-child(1) .tagline { background: var(--neon); color: #06070d; }
+  .card:nth-child(2) .tagline { background: var(--orange); color: #06070d; }
+  .card:nth-child(3) .tagline { background: var(--cyan); color: #06070d; }
+
+  .card-head h2 {
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 7px;
+  }
+  .card-head p {
+    font-size: 13.5px;
+    color: #96a3ba;
+    line-height: 1.65;
+  }
+
+  /* 预览框 */
+  .frame {
+    position: relative;
+    width: calc(100% - 44px);
+    margin: 4px auto 0;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #000;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .frame iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 750px;
+    height: 1000px;
+    border: 0;
+    transform-origin: top left;
+    pointer-events: none;
+  }
+
+  .actions {
+    padding: 20px 22px 24px;
+    display: flex;
+    gap: 10px;
+  }
+  .btn {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+  }
+  .btn.primary {
+    background: var(--neon);
+    color: #06070d;
+  }
+  .btn.primary:hover { background: #fff; }
+  .btn.ghost {
+    color: #c3cfe2;
+    border: 1px solid rgba(255,255,255,0.16);
+  }
+  .btn.ghost:hover {
+    border-color: var(--neon);
+    color: var(--neon);
+  }
+
+  /* 底部 */
+  footer {
+    margin-top: 64px;
+    padding-top: 34px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+  }
+  .office {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 12px 22px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgba(57,255,20,0.14), rgba(0,229,255,0.12));
+    border: 1px solid rgba(57,255,20,0.3);
+  }
+  .office .k { color: var(--neon); font-size: 13px; }
+  .footnote {
+    font-size: 12.5px;
+    color: #6c7893;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 640px) {
+    header { padding: 38px 0 30px; }
+    .brand { padding: 10px 18px; gap: 12px; }
+    .brand img.logo { width: 84px; }
+    .grid { gap: 22px; }
+    footer { justify-content: center; text-align: center; }
+  }
+</style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow a"></div>
+  <div class="bg-glow b"></div>
+
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img class="logo" src="assets/logo-chuangfei.png" alt="创飞科技" />
+        <span class="divider"></span>
+        <img class="school" src="assets/logo-university.png" alt="山东理工大学" />
+      </div>
+
+      <h1>创飞科技 <span class="hl">招新海报</span></h1>
+      <div class="slogan">我们和你一样，向往这片蓝天</div>
+
+      <div class="meta">
+        <span class="chip hot">2026 招新</span>
+        <span class="chip">山东理工大学</span>
+        <span class="chip">唯一职业化无人机团队</span>
+        <span class="chip">三个视觉方案</span>
+      </div>
+    </header>
+
+    <main class="grid">
+      <article class="card">
+        <div class="card-head">
+          <div class="tagline">方案 A</div>
+          <h2>酷炫炸街版</h2>
+          <p>荧光绿 + 亮橙 + 纯黑撞色，喷漆飞溅与斜切大字，视觉冲击最强，远处也能一眼抓住注意力。</p>
+        </div>
+        <div class="frame">
+          <iframe src="poster-cool.html" scrolling="no" loading="lazy" title="酷炫炸街版预览"></iframe>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="poster-cool.html" target="_blank" rel="noopener">查看完整海报</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="tagline">方案 B</div>
+          <h2>活力亲和版</h2>
+          <p>渐变绿配暖橙，圆角卡片与柔和光斑，明快不压迫，适合发朋友圈和新生群，亲和力更强。</p>
+        </div>
+        <div class="frame">
+          <iframe src="poster-friendly.html" scrolling="no" loading="lazy" title="活力亲和版预览"></iframe>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="poster-friendly.html" target="_blank" rel="noopener">查看完整海报</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="tagline">方案 C</div>
+          <h2>赛博科技版</h2>
+          <p>深空蓝紫底配霓虹青与荧光绿，透视网格地面加旋转旋翼，科技感最足，贴合无人机社团属性。</p>
+        </div>
+        <div class="frame">
+          <iframe src="poster-cyber.html" scrolling="no" loading="lazy" title="赛博科技版预览"></iframe>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="poster-cyber.html" target="_blank" rel="noopener">查看完整海报</a>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <div class="office">
+        <span class="k">办公室</span>
+        大红炉共创空间 203
+      </div>
+      <div class="footnote">创飞科技 · CREFLY TECH · 2026 招新</div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var POSTER_W = 750, POSTER_H = 1000;
+
+      function fit(frame) {
+        var iframe = frame.querySelector('iframe');
+        if (!iframe) return;
+        var scale = frame.clientWidth / POSTER_W;
+        iframe.style.transform = 'scale(' + scale + ')';
+        frame.style.height = (POSTER_H * scale) + 'px';
+      }
+
+      function fitAll() {
+        document.querySelectorAll('.frame').forEach(fit);
+      }
+
+      window.addEventListener('resize', fitAll);
+      window.addEventListener('load', fitAll);
+      fitAll();
+
+      if (window.ResizeObserver) {
+        var ro = new ResizeObserver(function (entries) {
+          entries.forEach(function (e) { fit(e.target); });
+        });
+        document.querySelectorAll('.frame').forEach(function (f) { ro.observe(f); });
+      }
+    })();
+  </script>
+</body>
+</html>
