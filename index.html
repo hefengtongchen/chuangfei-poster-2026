@@ -197,6 +197,16 @@
     border: 0;
     transform-origin: top left;
     pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  /* 缩放到容器宽度后再显示，避免未缩放时的尺寸闪烁 */
+  .frame.is-fit iframe { opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .frame iframe { transition: none; }
+    .btn { transition: none; }
   }
 
   /* 角标 */
@@ -300,6 +310,30 @@
     letter-spacing: 0.5px;
   }
 
+  .noscript-hint {
+    margin-top: 14px;
+    font-size: 13px;
+    text-align: center;
+    color: #a9b6cc;
+    padding: 12px 16px;
+    border: 1px dashed rgba(255,255,255,0.18);
+    border-radius: 10px;
+  }
+  .noscript-hint a { color: var(--neon); }
+
+  /* ---------- 打印 ---------- */
+  @media print {
+    .bg-grid, .bg-glow, .spotlight, .specs, .meta, footer, .card-actions { display: none !important; }
+    body { background: #fff; color: #000; }
+    .wrap { padding: 0; max-width: none; }
+    header { padding: 0 0 16px; }
+    h1, h1 .hl { color: #000; -webkit-text-fill-color: #000; background: none; }
+    .poster-card { border: 0; box-shadow: none; padding: 0; background: none; }
+    .frame { box-shadow: none; }
+    .frame::after { display: none; }
+    .brand, .slogan, .eyebrow { color: #000; }
+  }
+
   /* ---------- 底部 ---------- */
   footer {
     margin-top: 60px;
@@ -354,7 +388,7 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <img class="logo" src="assets/logo-chuangfei.png" alt="创飞科技" />
+        <img class="logo" src="assets/logo-chuangfei-opt.png" alt="创飞科技" width="480" height="480" />
         <span class="divider"></span>
         <img class="school" src="assets/logo-university.png" alt="山东理工大学" />
       </div>
@@ -373,8 +407,11 @@
     <main class="showcase">
       <article class="poster-card">
         <div class="frame">
-          <iframe src="poster-cyber.html" scrolling="no" loading="lazy" title="创飞科技招新海报预览"></iframe>
+          <iframe src="poster-cyber.html" scrolling="no" loading="lazy" tabindex="-1" title="创飞科技招新海报预览"></iframe>
         </div>
+        <noscript>
+          <p class="noscript-hint">当前浏览器未启用 JavaScript，预览图无法自适应缩放，请直接<a href="poster-cyber.html">打开完整海报</a>。</p>
+        </noscript>
         <div class="card-actions">
           <a class="btn primary" href="poster-cyber.html" target="_blank" rel="noopener">查看完整海报</a>
         </div>
@@ -417,6 +454,7 @@
         if (!iframe) return;
         var scale = frame.clientWidth / POSTER_W;
         iframe.style.transform = 'scale(' + scale + ')';
+        frame.classList.add('is-fit');
       }
 
       function fitAll() {

@@ -97,6 +97,11 @@
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
+  /* 尊重系统的减弱动效设置 */
+  @media (prefers-reduced-motion: reduce) {
+    .rotor-spin { animation: none; }
+  }
+
   /* ---------- 内容容器 ---------- */
   .content {
     position: relative;
@@ -442,7 +447,7 @@
           STATUS: <span class="on">RECRUITING</span>
         </div>
         <div class="brand-group">
-          <img class="logo-cf" src="assets/logo-chuangfei.png" alt="创飞科技" />
+          <img class="logo-cf" src="assets/logo-chuangfei-opt.png" alt="创飞科技" width="480" height="480" />
           <div class="logo-school">
             <img src="assets/logo-university.png" alt="山东理工大学" />
           </div>
