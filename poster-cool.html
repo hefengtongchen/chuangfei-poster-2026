@@ -15,7 +15,13 @@
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
-    padding: 20px;
+    padding: 20px 0;
+  }
+
+  /* 固定 750×1000 画稿：窄屏等比缩放，保证版式不变形 */
+  .stage {
+    position: relative;
+    flex-shrink: 0;
   }
 
   .poster {
@@ -26,6 +32,7 @@
     overflow: hidden;
     color: #fff;
     background: #0a0a0a;
+    transform-origin: top left;
   }
 
   /* 背景图 */
@@ -400,6 +407,7 @@
 </style>
 </head>
 <body>
+  <div class="stage">
   <div class="poster">
     <!-- 背景 -->
     <div class="bg"></div>
@@ -416,7 +424,7 @@
     <div class="content">
       <!-- 顶部 Logo -->
       <div class="top-bar">
-        <img class="logo-cf" src="assets/logo-chuangfei.png" alt="创飞科技" />
+        <img class="logo-cf" src="assets/logo-chuangfei-opt.png" alt="创飞科技" width="480" height="480" />
         <div class="logo-school">
           <img src="assets/logo-university.png" alt="山东理工大学" />
         </div>
@@ -505,5 +513,26 @@
 
     <div class="corner-sticker">JOIN US</div>
   </div>
+  </div>
+
+  <script>
+    (function () {
+      var POSTER_W = 750, POSTER_H = 1000;
+
+      function fit() {
+        var stage = document.querySelector('.stage');
+        var poster = document.querySelector('.poster');
+        if (!stage || !poster) return;
+        var scale = Math.min(1, window.innerWidth / POSTER_W);
+        poster.style.transform = scale < 1 ? 'scale(' + scale + ')' : '';
+        stage.style.width = Math.round(POSTER_W * scale) + 'px';
+        stage.style.height = Math.round(POSTER_H * scale) + 'px';
+      }
+
+      window.addEventListener('resize', fit);
+      window.addEventListener('load', fit);
+      fit();
+    })();
+  </script>
 </body>
 </html>
