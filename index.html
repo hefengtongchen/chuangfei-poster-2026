@@ -4,62 +4,65 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>创飞科技 · 2026 招新海报</title>
-<meta name="description" content="山东理工大学创飞科技无人机社团 2026 招新海报，赛博科技风格主视觉。" />
+<meta name="description" content="山东理工大学创飞科技无人机社团 2026 招新海报，潮流街头喷漆涂鸦风格。" />
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
     --neon: #39ff14;
     --orange: #ff6b00;
-    --cyan: #00e5ff;
-    --violet: #7a6cff;
-    --bg: #06070d;
-    --panel: #0d1020;
+    --ink: #0a0a0a;
+    --panel: #141414;
+    --text: #f2f5f0;
+    --muted: #9aa39a;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
     font-family: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg);
-    color: #eaf0ff;
+    background: var(--ink);
+    color: var(--text);
     -webkit-font-smoothing: antialiased;
     line-height: 1.6;
     overflow-x: hidden;
   }
 
-  /* ---------- 背景氛围 ---------- */
-  .bg-grid {
+  /* ---------- 背景：喷漆颗粒 + 网格 ---------- */
+  .bg-layer {
     position: fixed;
     inset: 0;
-    background-image:
-      radial-gradient(ellipse 90% 55% at 50% -10%, rgba(90,60,255,0.30), transparent 70%),
-      linear-gradient(rgba(0,229,255,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,229,255,0.05) 1px, transparent 1px);
-    background-size: 100% 100%, 58px 58px, 58px 58px;
     pointer-events: none;
     z-index: 0;
   }
-  .bg-glow {
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(57,255,20,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(57,255,20,0.05) 1px, transparent 1px);
+    background-size: 62px 62px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 30%, transparent 100%);
+  }
+  .bg-grain {
+    opacity: 0.4;
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(57,255,20,0.16), transparent 42%),
+      radial-gradient(circle at 88% 12%, rgba(255,107,0,0.18), transparent 46%),
+      radial-gradient(circle at 78% 82%, rgba(57,255,20,0.10), transparent 40%),
+      radial-gradient(circle at 8% 88%, rgba(255,107,0,0.12), transparent 44%);
+  }
+
+  /* 喷漆飞溅点 */
+  .splat {
     position: fixed;
     border-radius: 50%;
-    filter: blur(130px);
-    opacity: 0.20;
     pointer-events: none;
     z-index: 0;
+    filter: blur(46px);
+    opacity: 0.34;
   }
-  .bg-glow.a { background: var(--cyan); width: 560px; height: 560px; top: -200px; left: -160px; }
-  .bg-glow.b { background: var(--neon); width: 520px; height: 520px; bottom: -240px; right: -180px; }
-
-  .spotlight {
-    position: fixed;
-    top: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 1px; height: 1px;
-    box-shadow: 0 0 600px 200px rgba(0,229,255,0.10);
-    pointer-events: none;
-    z-index: 0;
-  }
+  .splat.a { width: 320px; height: 320px; background: var(--neon); top: -90px; left: -80px; }
+  .splat.b { width: 300px; height: 300px; background: var(--orange); bottom: -80px; right: -70px; }
 
   .wrap {
     position: relative;
@@ -71,7 +74,7 @@
 
   /* ---------- 顶部 ---------- */
   header {
-    padding: 60px 0 46px;
+    padding: 58px 0 44px;
     text-align: center;
   }
 
@@ -79,18 +82,18 @@
     display: inline-flex;
     align-items: center;
     gap: 16px;
-    margin-bottom: 32px;
+    margin-bottom: 34px;
     padding: 12px 26px;
     background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(0,229,255,0.28);
-    border-radius: 60px;
+    border: 1px solid rgba(57,255,20,0.30);
+    border-radius: 6px;
     backdrop-filter: blur(10px);
-    box-shadow: 0 0 30px rgba(0,229,255,0.10);
+    box-shadow: 4px 4px 0 rgba(255,107,0,0.55);
   }
   .brand img.logo { width: 108px; display: block; }
   .brand .divider {
     width: 1px; height: 30px;
-    background: rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.18);
   }
   .brand img.school {
     width: 38px; height: 38px;
@@ -101,39 +104,41 @@
   }
 
   .eyebrow {
+    display: inline-block;
     font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
     font-size: 12px;
     letter-spacing: 5px;
-    color: var(--neon);
     text-transform: uppercase;
-    margin-bottom: 16px;
-    text-shadow: 0 0 18px rgba(57,255,20,0.6);
+    color: var(--ink);
+    background: var(--neon);
+    padding: 5px 16px;
+    margin-bottom: 20px;
+    transform: rotate(-1.5deg);
+    box-shadow: 4px 4px 0 var(--orange);
   }
 
   h1 {
-    font-size: clamp(34px, 6.2vw, 60px);
+    font-size: clamp(36px, 6.6vw, 64px);
     font-weight: 900;
     letter-spacing: 4px;
-    line-height: 1.12;
-    margin-bottom: 20px;
+    line-height: 1.1;
+    margin-bottom: 22px;
+    text-shadow: 4px 4px 0 var(--orange);
   }
   h1 .hl {
-    background: linear-gradient(120deg, var(--cyan), var(--neon));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--neon);
+    text-shadow: 4px 4px 0 rgba(255,107,0,0.85);
   }
 
   .slogan {
     display: inline-block;
     font-size: clamp(14px, 2.3vw, 18px);
     letter-spacing: 3px;
-    color: #c2d3e8;
-    padding: 10px 28px;
-    border: 1px solid rgba(0,229,255,0.42);
-    border-radius: 40px;
-    background: rgba(0,229,255,0.06);
-    box-shadow: inset 0 0 24px rgba(0,229,255,0.10);
+    color: var(--text);
+    padding: 10px 26px;
+    background: rgba(0,0,0,0.5);
+    border-left: 4px solid var(--neon);
+    backdrop-filter: blur(6px);
   }
 
   .meta {
@@ -146,17 +151,16 @@
   .chip {
     font-size: 13px;
     padding: 6px 16px;
-    border-radius: 30px;
+    border-radius: 4px;
     background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.10);
-    color: #a9b6cc;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--muted);
     letter-spacing: 1px;
   }
   .chip.hot {
     color: var(--neon);
-    border-color: rgba(57,255,20,0.42);
-    background: rgba(57,255,20,0.08);
-    box-shadow: 0 0 18px rgba(57,255,20,0.16);
+    border-color: rgba(57,255,20,0.45);
+    background: rgba(57,255,20,0.09);
   }
 
   /* ---------- 海报主区 ---------- */
@@ -170,14 +174,13 @@
     position: relative;
     width: 100%;
     max-width: 660px;
-    background: linear-gradient(180deg, var(--panel), #080a14);
-    border: 1px solid rgba(0,229,255,0.22);
-    border-radius: 20px;
+    background: linear-gradient(180deg, var(--panel), #0d0d0d);
+    border: 2px solid rgba(57,255,20,0.35);
+    border-radius: 8px;
     padding: 20px;
     box-shadow:
-      0 30px 90px rgba(0,0,0,0.65),
-      0 0 0 1px rgba(0,229,255,0.06),
-      0 0 70px rgba(0,229,255,0.08);
+      10px 10px 0 rgba(255,107,0,0.55),
+      0 30px 80px rgba(0,0,0,0.7);
   }
 
   .frame {
@@ -185,9 +188,9 @@
     width: 100%;
     aspect-ratio: 3 / 4;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: 4px;
     background: #000;
-    box-shadow: 0 12px 36px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(255,255,255,0.06);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
   }
   .frame iframe {
     position: absolute;
@@ -203,12 +206,6 @@
   /* 缩放到容器宽度后再显示，避免未缩放时的尺寸闪烁 */
   .frame.is-fit iframe { opacity: 1; }
 
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .frame iframe { transition: none; }
-    .btn { transition: none; }
-  }
-
   /* 角标 */
   .frame::after {
     content: '2026 RECRUITMENT';
@@ -218,12 +215,10 @@
     font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
     font-size: 10px;
     letter-spacing: 2px;
-    color: rgba(255,255,255,0.55);
-    background: rgba(0,0,0,0.45);
-    border: 1px solid rgba(255,255,255,0.14);
-    border-radius: 4px;
+    color: var(--ink);
+    background: var(--neon);
+    border-radius: 2px;
     padding: 4px 9px;
-    backdrop-filter: blur(6px);
   }
 
   .card-actions {
@@ -239,74 +234,56 @@
     font-weight: 700;
     letter-spacing: 1.5px;
     padding: 14px 18px;
-    border-radius: 10px;
-    transition: background 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s;
+    border-radius: 6px;
+    transition: background 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
   }
   .btn.primary {
-    background: linear-gradient(90deg, var(--cyan), var(--neon));
-    color: #06070d;
-    box-shadow: 0 6px 26px rgba(0,229,255,0.30);
+    background: var(--neon);
+    color: var(--ink);
+    box-shadow: 5px 5px 0 var(--orange);
   }
   .btn.primary:hover {
     background: #fff;
-    box-shadow: 0 6px 30px rgba(255,255,255,0.25);
-  }
-  .btn.ghost {
-    flex: 0 0 auto;
-    color: #c3cfe2;
-    border: 1px solid rgba(255,255,255,0.16);
-  }
-  .btn.ghost:hover {
-    border-color: var(--neon);
-    color: var(--neon);
-    box-shadow: 0 0 20px rgba(57,255,20,0.18);
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 var(--orange);
   }
 
   /* ---------- 信息条 ---------- */
   .specs {
-    margin-top: 56px;
+    margin-top: 58px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 16px;
   }
   .spec {
     padding: 22px 24px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 14px;
-    position: relative;
-    overflow: hidden;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-left: 4px solid var(--neon);
+    border-radius: 4px;
   }
-  .spec::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 2px;
-    background: linear-gradient(90deg, var(--cyan), transparent);
-  }
-  .spec:nth-child(2)::before { background: linear-gradient(90deg, var(--neon), transparent); }
-  .spec:nth-child(3)::before { background: linear-gradient(90deg, var(--orange), transparent); }
+  .spec:nth-child(2) { border-left-color: var(--orange); }
+  .spec:nth-child(3) { border-left-color: var(--neon); }
   .spec .label {
     font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
     font-size: 11px;
     letter-spacing: 2px;
-    color: var(--cyan);
+    color: var(--neon);
     margin-bottom: 10px;
     text-transform: uppercase;
   }
-  .spec:nth-child(2) .label { color: var(--neon); }
-  .spec:nth-child(3) .label { color: var(--orange); }
+  .spec:nth-child(2) .label { color: var(--orange); }
   .spec .value {
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 1px;
     line-height: 1.55;
-    color: #eaf0ff;
+    color: var(--text);
   }
   .spec .sub {
     margin-top: 6px;
     font-size: 12.5px;
-    color: #8b98b0;
+    color: var(--muted);
     letter-spacing: 0.5px;
   }
 
@@ -314,31 +291,31 @@
     margin-top: 14px;
     font-size: 13px;
     text-align: center;
-    color: #a9b6cc;
+    color: var(--muted);
     padding: 12px 16px;
     border: 1px dashed rgba(255,255,255,0.18);
-    border-radius: 10px;
+    border-radius: 6px;
   }
   .noscript-hint a { color: var(--neon); }
 
   /* ---------- 打印 ---------- */
   @media print {
-    .bg-grid, .bg-glow, .spotlight, .specs, .meta, footer, .card-actions { display: none !important; }
+    .bg-layer, .splat, .specs, .meta, footer, .card-actions { display: none !important; }
     body { background: #fff; color: #000; }
     .wrap { padding: 0; max-width: none; }
     header { padding: 0 0 16px; }
-    h1, h1 .hl { color: #000; -webkit-text-fill-color: #000; background: none; }
+    h1, h1 .hl { color: #000; text-shadow: none; }
     .poster-card { border: 0; box-shadow: none; padding: 0; background: none; }
     .frame { box-shadow: none; }
     .frame::after { display: none; }
-    .brand, .slogan, .eyebrow { color: #000; }
+    .brand, .slogan, .eyebrow { color: #000; box-shadow: none; background: none; }
   }
 
   /* ---------- 底部 ---------- */
   footer {
     margin-top: 60px;
     padding-top: 34px;
-    border-top: 1px solid rgba(255,255,255,0.08);
+    border-top: 1px solid rgba(255,255,255,0.09);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -353,18 +330,18 @@
     font-weight: 700;
     letter-spacing: 1px;
     padding: 12px 22px;
-    border-radius: 10px;
-    background: linear-gradient(90deg, rgba(0,229,255,0.14), rgba(57,255,20,0.12));
-    border: 1px solid rgba(0,229,255,0.30);
+    border-radius: 6px;
+    background: rgba(255,107,0,0.14);
+    border: 2px dashed rgba(255,107,0,0.6);
   }
   .office .k {
-    color: var(--cyan);
+    color: var(--orange);
     font-size: 13px;
   }
   .footnote {
     font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
     font-size: 12px;
-    color: #6c7893;
+    color: #6f776f;
     letter-spacing: 2px;
   }
 
@@ -372,18 +349,23 @@
     header { padding: 40px 0 32px; }
     .brand { padding: 10px 18px; gap: 12px; }
     .brand img.logo { width: 84px; }
-    .poster-card { padding: 14px; border-radius: 16px; }
-    .card-actions { flex-direction: column; }
-    .btn.ghost { flex: 1; }
+    .poster-card { padding: 14px; box-shadow: 6px 6px 0 rgba(255,107,0,0.55); }
     footer { justify-content: center; text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .frame iframe { transition: none; }
+    .btn { transition: none; }
+    .btn.primary:hover { transform: none; }
   }
 </style>
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <div class="bg-glow a"></div>
-  <div class="bg-glow b"></div>
-  <div class="spotlight"></div>
+  <div class="bg-layer bg-grid"></div>
+  <div class="bg-layer bg-grain"></div>
+  <div class="splat a"></div>
+  <div class="splat b"></div>
 
   <div class="wrap">
     <header>
@@ -407,13 +389,13 @@
     <main class="showcase">
       <article class="poster-card">
         <div class="frame">
-          <iframe src="poster-cyber.html" scrolling="no" loading="lazy" tabindex="-1" title="创飞科技招新海报预览"></iframe>
+          <iframe src="poster-cool.html" scrolling="no" loading="lazy" tabindex="-1" title="创飞科技招新海报预览"></iframe>
         </div>
         <noscript>
-          <p class="noscript-hint">当前浏览器未启用 JavaScript，预览图无法自适应缩放，请直接<a href="poster-cyber.html">打开完整海报</a>。</p>
+          <p class="noscript-hint">当前浏览器未启用 JavaScript，预览图无法自适应缩放，请直接<a href="poster-cool.html">打开完整海报</a>。</p>
         </noscript>
         <div class="card-actions">
-          <a class="btn primary" href="poster-cyber.html" target="_blank" rel="noopener">查看完整海报</a>
+          <a class="btn primary" href="poster-cool.html" target="_blank" rel="noopener">查看完整海报</a>
         </div>
       </article>
     </main>
@@ -421,8 +403,8 @@
     <section class="specs">
       <div class="spec">
         <div class="label">Visual</div>
-        <div class="value">赛博科技风格</div>
-        <div class="sub">深空蓝紫底 · 霓虹青与荧光绿双主色</div>
+        <div class="value">潮流街头喷漆风</div>
+        <div class="sub">荧光绿 + 亮橙 + 纯黑撞色，涂鸦飞溅</div>
       </div>
       <div class="spec">
         <div class="label">Size</div>
@@ -447,7 +429,7 @@
 
   <script>
     (function () {
-      var POSTER_W = 750, POSTER_H = 1000;
+      var POSTER_W = 750;
 
       function fit(frame) {
         var iframe = frame.querySelector('iframe');
